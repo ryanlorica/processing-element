@@ -1,15 +1,19 @@
 # processing-element
-A configurable processing element for arbitrary deep neural network accelerators. Implemented in Scala w/ Chisel [1].
+A processing element for course-grained reconfigurability in deep neural network accelerators. Implemented in Scala w/ Chisel [1].
 
 *Version 2 Proposal.*
 
 ## Overview
-Arrays of processing elements (PE) are at the heart of many deep neural network (DNN) accelerator designs [2]. This implementation provides a PE generator function: one that, once configured, will generate a Chisel Module for FIRRTL or Verilog for a PE. The goal of this design is to both unify existing PEs and to generalize to new ones. Ideally, it will enable programmatic design-space exploration.
+Arrays of processing elements (PE) are at the heart of many deep neural network (DNN) accelerator designs [2]. This implementation provides a PE generator function: one that, once configured, will generate a Chisel Module for FIRRTL or Verilog for a PE. The goal of this design is to both emulate existing PEs and to generalize to new ones. Ideally, it will enable programmatic design-space exploration.
 
-## Comparison to Version 1
-Version 2--aside from having "processing-engine" changed to "processing-element"--is both simpler to use and more powerful. Programming-like configuration is gone; one only has to set connections, widths, and function sets. Pipelining is automatically optimized and internal control is entirely predefined; the PE is controlled via a limited set of external control signals.
+
+<img src="img/top-level-arch.png" width="720">
+
+## Design Philosophy
+With Version 1, the primary design trade-offs were between expressive power of configuration and simplicity of use; the balance was tilted severely toward expressive power. However, for Version 2, precise topological configuration is sacrificed for both representational power and simplicity of use. With very little mandatory configuration, the PE-as-is supports a wide variety of data flows, albeit with routing overhead. Programming-like configuration is gone; one only has to set connections, SIMD widths, and function sets. Pipelining is automatically optimized and internal control is entirely predefined; the PE is controlled via a limited set of external control signals.
 
 ## Microarchitecture
+The PE microarchitecture consists of five modules and a relatively simple NoC. To enable arbitrary data flows, the NoC passes packets consisting of both data and routing instructions. 
 In addition to a control unit and NoC, the PE has five modules connected via a configurable NoC:
 1. an interface with the external array,
 2. a register file (RF),
@@ -19,7 +23,7 @@ In addition to a control unit and NoC, the PE has five modules connected via a c
 
 ### NoC
 #### Router
-Every module is configured with a router in and out. As the connection between any two modules may or may not be there, every router is of a configurable in:out ratio. Each router must be configured
+Every module has a router for I/O.  
 #### Links
 Each of the links is equipped with a configurable register chain to facilitate pipelining. Every link may also vary in terms of width and bitwidth; *i.e.* it will be width * bitwidth wires wide. Link width and bitwidth is automatically set to match the module interfaces. 
 
