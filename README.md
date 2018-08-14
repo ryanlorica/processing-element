@@ -30,7 +30,7 @@ The register file is of configurable
 4. number of inputs,
 5. and number of outputs.
 
-The number of inputs and outputs is automatically set via a global SIMD configuration.
+The number of inputs and outputs is automatically set via a global SIMD configuration. The RFs are also fully addressable to enable emerging dataflows.
 
 ### Adder Block
 The adder is slightly complicated; this is to enable both SIMD MACs and SIMD additions. It is of a configurable input width and bitwidth. It can also be configured pre-synthesis to be able to add in parallel, as a tree, or both. For example, one configured to do both may have 256 input pairs, but based on a control signal, will either reduce groups of 16 to 16 outputs or simply add all 256 pairs in parallel. One configured as a 256:1 tree may simply always reduce 256 inputs to one output.
