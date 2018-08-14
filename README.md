@@ -1,5 +1,5 @@
 # processing-element
-A course-grained reconfigurable architecture-based processing element for deep neural network accelerators. Implemented in Scala w/ Chisel3 [1].
+A course-grained reconfigurable architecture-based processing element for deep neural network accelerators. To be implemented in Scala w/ Chisel3 [1].
 
 *Version 2 Proposal.*
 
