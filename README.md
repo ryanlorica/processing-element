@@ -21,6 +21,16 @@ The PE microarchitecture consists of seven modules and a minature NoC. The post-
 Every module has a specialized router for I/O. The router each router has a configuration register that contains information for routing. For example, for to emulate the Eyeriss PE [3], the weight RF and activation RF output to the multiplier, the multiplier outputs to the adder, the adder outputs to the partial sum register and IO module, and the partial sum register outputs to the adder. Pipelining is automatically facilitated through Decoupled (ready/valid) interfaces between each router and the entrance to the PE. 
 #### Links
 The links between the routers are of configurable bit-widths and data representations, *e.g.* 8-bit signed int, 16-bit floating point, 64-bit floating point, *etc.* Each link is not configured directly, but is configured via a global "data path" configuration.
+#### Addresses
+| Module           | Address |
+| ---------------- | ------- |
+| I/O              | 0       |
+| Weight RF        | 1       |
+| Activation RF    | 2       |
+| Multiplier Block | 3       |
+| Adder Block      | 4       |
+| Partial Sum RF   | 5       |
+| Nonlinear Unit   | 6       |
 
 ### Register Files
 The register file is of configurable
