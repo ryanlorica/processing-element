@@ -1,32 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="15a5629d-466c-4b3b-9d0a-fa16f1d5a600" name="Default" comment="Beg">
-      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/RyanL.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/scala/pe/addBlock.scala" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/scala/pe/encoding.scala" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/scala/pe/multBlock.scala" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/scala/pe/rf.scala" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/scala/pe/switch.scala" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/scala/rfTest.scala" afterDir="false" />
+    <list default="true" id="15a5629d-466c-4b3b-9d0a-fa16f1d5a600" name="Default" comment="Begin implementing everything.">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/keep.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/pe/NLU.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/pe/PEConfig.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/pe/addBlock/AddBlock.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/pe/addBlock/AddBlockCtrl.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/pe/addBlock/Adder.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/pe/multBlock/MultBlock.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/pe/multBlock/Multiplier.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/pe/rf/RF.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/pe/rf/RFControl.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/pe/switcher/SwitcherCtrl.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/processing-element.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/processing-element.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/pe/PE.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/pe/pe.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/.history" beforeDir="false" afterPath="$PROJECT_DIR$/target/.history" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/default/processing-element$sources/0.1/resolved.xml.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/default/processing-element$sources/0.1/resolved.xml.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/default/processing-element$sources/0.1/resolved.xml.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/default/processing-element$sources/0.1/resolved.xml.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/reports/default-processing-element$sources-compile-internal.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/reports/default-processing-element$sources-compile-internal.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/reports/default-processing-element$sources-compile.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/reports/default-processing-element$sources-compile.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/reports/default-processing-element$sources-optional.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/reports/default-processing-element$sources-optional.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/reports/default-processing-element$sources-plugin.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/reports/default-processing-element$sources-plugin.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/reports/default-processing-element$sources-pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/reports/default-processing-element$sources-pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/reports/default-processing-element$sources-provided.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/reports/default-processing-element$sources-provided.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/reports/default-processing-element$sources-runtime-internal.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/reports/default-processing-element$sources-runtime-internal.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/reports/default-processing-element$sources-runtime.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/reports/default-processing-element$sources-runtime.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/reports/default-processing-element$sources-scala-tool.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/reports/default-processing-element$sources-scala-tool.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/reports/default-processing-element$sources-test-internal.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/reports/default-processing-element$sources-test-internal.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/reports/default-processing-element$sources-test.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/reports/default-processing-element$sources-test.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/streams/$global/$global/dumpStructure/$global/streams/out" beforeDir="false" afterPath="$PROJECT_DIR$/target/streams/$global/$global/dumpStructure/$global/streams/out" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/streams/$global/updateClassifiers/$global/streams/out" beforeDir="false" afterPath="$PROJECT_DIR$/target/streams/$global/updateClassifiers/$global/streams/out" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/pe/PE.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/pe/PE.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/pe/addBlock.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/pe/encoding.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/pe/encoding.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/pe/multBlock.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/pe/pe.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/pe/rf.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/pe/switch.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/pe/switcher/Switcher.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/scala/rfTest.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/scala/rfTest.scala" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -47,38 +43,47 @@
     <session id="1192830095">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="8" />
+          <entry key="project.closed" value="9" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.12" value="4" />
+          <entry key="project.open.time.13" value="1" />
           <entry key="project.open.time.2" value="1" />
           <entry key="project.open.time.5" value="1" />
           <entry key="project.open.time.8" value="1" />
           <entry key="project.open.time.9" value="1" />
-          <entry key="project.opened" value="9" />
+          <entry key="project.opened" value="10" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="class" value="1" />
-          <entry key="scala" value="7" />
+          <entry key="md" value="1" />
+          <entry key="scala" value="20" />
+          <entry key="txt" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CLASS" value="1" />
-          <entry key="Scala" value="7" />
+          <entry key="PLAIN_TEXT" value="3" />
+          <entry key="Scala" value="20" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="scala" value="5846" />
-          <entry key="txt" value="11" />
+          <entry key="scala" value="8179" />
+          <entry key="txt" value="48" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PLAIN_TEXT" value="11" />
-          <entry key="Scala" value="5846" />
+          <entry key="PLAIN_TEXT" value="48" />
+          <entry key="Scala" value="8179" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.vcs.git.usages">
+        <counts>
+          <entry key="git.branch.merge" value="2" />
         </counts>
       </usages-collector>
     </session>
@@ -86,61 +91,61 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/build.sbt">
+        <entry file="file://$PROJECT_DIR$/src/main/scala/pe/switcher/Switcher.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="12" column="34" selection-start-line="12" selection-start-column="34" selection-end-line="12" selection-end-column="34" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/scala/pe/pe.scala">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" column="40" lean-forward="true" selection-start-line="11" selection-start-column="40" selection-end-line="11" selection-end-column="40" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/scala/pe/rf.scala">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="25" column="14" lean-forward="true" selection-start-line="25" selection-start-column="14" selection-end-line="25" selection-end-column="14" />
+            <state relative-caret-position="102">
+              <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
               <folding>
-                <element signature="e#12#28#0" expanded="true" />
+                <element signature="e#21#37#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/scala/pe/switcher/SwitcherCtrl.scala">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="8" column="1" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/scala/pe/PE.scala">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="5" selection-start-line="5" selection-end-line="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/scala/pe/PEConfig.scala">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="2" column="83" selection-start-line="2" selection-start-column="83" selection-end-line="2" selection-end-column="83" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/scala/pe/rf/RFControl.scala">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="6" column="18" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
+              <folding>
+                <element signature="e#15#55#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/scala/pe/switch.scala">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="15" column="52" lean-forward="true" selection-start-line="15" selection-start-column="52" selection-end-line="15" selection-end-column="52" />
-              <folding>
-                <element signature="e#12#28#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/scala/pe/encoding.scala">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="31" selection-start-line="10" selection-start-column="31" selection-end-line="10" selection-end-column="31" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/scala/rfTest.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="23" selection-start-line="9" selection-start-column="23" selection-end-line="9" selection-end-column="23" />
+            <state relative-caret-position="136">
+              <caret line="8" column="24" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
               <folding>
                 <element signature="e#0#16#0" expanded="true" />
               </folding>
@@ -149,19 +154,43 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/scala/pe/multBlock.scala">
+        <entry file="file://$PROJECT_DIR$/src/main/scala/pe/addBlock/AddBlock.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="65" lean-forward="true" selection-start-line="4" selection-start-column="65" selection-end-line="4" selection-end-column="65" />
+            <state relative-caret-position="579">
+              <caret line="45" column="75" selection-start-line="45" selection-start-column="75" selection-end-line="45" selection-end-column="75" />
+              <folding>
+                <element signature="e#21#50#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/scala/pe/addBlock.scala">
+        <entry file="file://$PROJECT_DIR$/src/main/scala/pe/rf/RF.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="16" selection-start-line="16" selection-end-line="16" />
+            <state relative-caret-position="408">
+              <caret line="24" column="3" selection-start-line="24" selection-start-column="3" selection-end-line="24" selection-end-column="3" />
+              <folding>
+                <element signature="e#15#43#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/scala/pe/addBlock/AddBlockCtrl.scala">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="6" column="12" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="12" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/scala/pe/NLU.scala">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="367">
+              <caret line="25" column="11" selection-start-line="25" selection-start-column="11" selection-end-line="25" selection-end-column="11" />
             </state>
           </provider>
         </entry>
@@ -176,18 +205,33 @@
       <list>
         <option value="$PROJECT_DIR$/build.sbt" />
         <option value="$PROJECT_DIR$/src/main/scala/pe/RF.scala" />
-        <option value="$PROJECT_DIR$/src/main/scala/pe/PE.scala" />
         <option value="$PROJECT_DIR$/src/test/scala/RFTester.scala" />
         <option value="$PROJECT_DIR$/src/test/scala/RFSpec.scala" />
-        <option value="$PROJECT_DIR$/src/test/scala/rfTest.scala" />
-        <option value="$PROJECT_DIR$/src/main/scala/pe/addBlock.scala" />
-        <option value="$PROJECT_DIR$/src/main/scala/pe/multBlock.scala" />
         <option value="$PROJECT_DIR$/src/main/scala/pe/dataEncoding.scala" />
-        <option value="$PROJECT_DIR$/src/main/scala/pe/encoding.scala" />
-        <option value="$PROJECT_DIR$/src/main/scala/pe/rf.scala" />
         <option value="$PROJECT_DIR$/src/main/scala/pe/Router.scala" />
-        <option value="$PROJECT_DIR$/src/main/scala/pe/pe.scala" />
         <option value="$PROJECT_DIR$/src/main/scala/pe/router.scala" />
+        <option value="$PROJECT_DIR$/src/main/scala/pe/addBlock/AddblockCtrl.scala" />
+        <option value="$PROJECT_DIR$/src/main/scala/pe/addBlock.scala" />
+        <option value="$PROJECT_DIR$/src/main/scala/pe/multBlock/Multiplier.scala" />
+        <option value="$PROJECT_DIR$/src/main/scala/pe/multBlock.scala" />
+        <option value="$PROJECT_DIR$/src/main/scala/pe/multBlock/MultBlock.scala" />
+        <option value="$PROJECT_DIR$/src/main/scala/pe/nlu.scala" />
+        <option value="$PROJECT_DIR$/src/main/scala/pe/encoding.scala" />
+        <option value="$PROJECT_DIR$/src/main/scala/pe/addBlock/Adder.scala" />
+        <option value="$PROJECT_DIR$/src/main/scala/pe/addBlock/AddBlockCtrl.scala" />
+        <option value="$PROJECT_DIR$/src/main/scala/pe/addBlock/AddBlock.scala" />
+        <option value="$PROJECT_DIR$/src/main/scala/pe/rf/RF.scala" />
+        <option value="$PROJECT_DIR$/src/main/scala/pe/rf.scala" />
+        <option value="$PROJECT_DIR$/src/main/scala/pe/rf/RFControl.scala" />
+        <option value="$PROJECT_DIR$/src/main/scala/pe/pe.scala" />
+        <option value="$PROJECT_DIR$/src/main/scala/pe/PE.scala" />
+        <option value="$PROJECT_DIR$/src/main/scala/pe/PEConfig.scala" />
+        <option value="$PROJECT_DIR$/src/main/scala/pe/switch.scala" />
+        <option value="$PROJECT_DIR$/src/main/scala/pe/SwitcherCtrl.scala" />
+        <option value="$PROJECT_DIR$/src/main/scala/pe/switcher/Switcher.scala" />
+        <option value="$PROJECT_DIR$/src/main/scala/pe/NLU.scala" />
+        <option value="$PROJECT_DIR$/src/main/resources/keep.txt" />
+        <option value="$PROJECT_DIR$/src/test/scala/rfTest.scala" />
       </list>
     </option>
   </component>
@@ -202,8 +246,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
       <pane id="Scope" />
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -231,33 +275,7 @@
               <item name="processing-element" type="b2602c69:ProjectViewProjectNode" />
               <item name="processing-element" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="scala" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="processing-element" type="b2602c69:ProjectViewProjectNode" />
-              <item name="processing-element" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="scala" type="462c0819:PsiDirectoryNode" />
-              <item name="pe" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="processing-element" type="b2602c69:ProjectViewProjectNode" />
-              <item name="processing-element" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="processing-element" type="b2602c69:ProjectViewProjectNode" />
-              <item name="processing-element" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="scala" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="processing-element" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
             </path>
           </expand>
           <select />
@@ -267,11 +285,16 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1534449650551" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1534459856310" />
     <property name="last_opened_file_path" value="$USER_HOME$/.ivy2/local/edu.berkeley.cs/hardfloat_2.11/1.2/jars/hardfloat_2.11.jar!/" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\RyanL\OneDrive\Research\SEAL\processing-element\src\main" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -359,29 +382,39 @@
     </task>
     <servers />
   </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
   <component name="ToolWindowManager">
     <frame x="-6" y="-6" width="1549" height="877" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.28236082" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.28638497" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
       <window_info id="UI Designer" order="4" />
       <window_info id="Capture Tool" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info active="true" anchor="bottom" id="Messages" visible="true" weight="0.3297587" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3297587" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.3297587" />
       <window_info anchor="bottom" id="Build" order="7" sideWeight="0.49934384" weight="0.33469945" />
       <window_info anchor="bottom" id="sbt-shell-toolwindow" order="8" />
       <window_info anchor="bottom" id="Terminal" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50135136" side_tool="true" weight="0.33469945" />
-      <window_info anchor="bottom" id="Version Control" order="11" weight="0.329235" />
+      <window_info anchor="bottom" id="Version Control" order="11" weight="0.32841823" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -393,7 +426,7 @@
       <window_info anchor="right" id="Maven Projects" order="8" />
     </layout>
     <layout-to-restore>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.28236082" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.28638497" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -406,12 +439,12 @@
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.3297587" />
       <window_info anchor="bottom" id="Build" order="7" sideWeight="0.49934384" weight="0.33469945" />
       <window_info anchor="bottom" id="sbt-shell-toolwindow" order="8" />
       <window_info anchor="bottom" id="Terminal" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50135136" side_tool="true" weight="0.33469945" />
-      <window_info anchor="bottom" id="Version Control" order="11" weight="0.329235" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="11" visible="true" weight="0.32841823" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -423,8 +456,38 @@
       <window_info anchor="right" id="Maven Projects" order="8" />
     </layout-to-restore>
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="2" />
+                  <option value="3" />
+                  <option value="1" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Begin implementing everything." />
+    <option name="LAST_COMMIT_MESSAGE" value="Begin implementing everything." />
   </component>
   <component name="editorHistoryManager">
     <entry file="jar://$USER_HOME$/.ivy2/cache/edu.berkeley.cs/chisel3_2.12/jars/chisel3_2.12-3.0.2.jar!/chisel3/package.class">
@@ -441,60 +504,165 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/scala/rfTest.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="23" selection-start-line="9" selection-start-column="23" selection-end-line="9" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#16#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/scala/pe/addBlock.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" selection-start-line="16" selection-end-line="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/pe/multBlock.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="65" lean-forward="true" selection-start-line="4" selection-start-column="65" selection-end-line="4" selection-end-column="65" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/pe/rf.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="25" column="14" lean-forward="true" selection-start-line="25" selection-start-column="14" selection-end-line="25" selection-end-column="14" />
+        <state relative-caret-position="85">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
           <folding>
             <element signature="e#12#28#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/pe/pe.scala">
+    <entry file="file://$PROJECT_DIR$/src/main/scala/pe/multBlock/MultBlock.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="40" lean-forward="true" selection-start-line="11" selection-start-column="40" selection-end-line="11" selection-end-column="40" />
+        <state relative-caret-position="170">
+          <caret line="10" column="20" lean-forward="true" selection-start-line="10" selection-start-column="20" selection-end-line="10" selection-end-column="20" />
+          <folding>
+            <element signature="e#22#79#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/pe/multBlock/Multiplier.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="39" lean-forward="true" selection-start-line="8" selection-start-column="39" selection-end-line="8" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/pe/multBlock.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
+          <folding>
+            <element signature="e#12#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/pe/addBlock/Adder.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="31" lean-forward="true" selection-start-line="6" selection-start-column="31" selection-end-line="6" selection-end-column="31" />
+          <folding>
+            <element signature="e#21#75#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/pe/addBlock/AddBlockCtrl.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="12" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/pe/addBlock/AddBlock.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="579">
+          <caret line="45" column="75" selection-start-line="45" selection-start-column="75" selection-end-line="45" selection-end-column="75" />
+          <folding>
+            <element signature="e#21#50#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/pe/rf.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
+          <folding>
+            <element signature="e#12#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/pe/rf/RF.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="24" column="3" selection-start-line="24" selection-start-column="3" selection-end-line="24" selection-end-column="3" />
+          <folding>
+            <element signature="e#15#43#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/pe/PE.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/pe/PEConfig.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="83" selection-start-line="2" selection-start-column="83" selection-end-line="2" selection-end-column="83" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/pe/switcher/Switcher.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
+          <folding>
+            <element signature="e#21#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/pe/switcher/SwitcherCtrl.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="1" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/pe/NLU.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="367">
+          <caret line="25" column="11" selection-start-line="25" selection-start-column="11" selection-end-line="25" selection-end-column="11" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/scala/pe/encoding.scala">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
-          <caret line="10" column="31" selection-start-line="10" selection-start-column="31" selection-end-line="10" selection-end-column="31" />
+          <caret line="10" column="16" lean-forward="true" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="16" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/pe/switch.scala">
+    <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="52" lean-forward="true" selection-start-line="15" selection-start-column="52" selection-end-line="15" selection-end-column="52" />
+        <state relative-caret-position="204">
+          <caret line="12" column="27" selection-start-line="12" selection-start-column="27" selection-end-line="12" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/keep.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="5" selection-start-column="5" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/pe/rf/RFControl.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="18" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
           <folding>
-            <element signature="e#12#28#0" expanded="true" />
+            <element signature="e#15#55#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/scala/rfTest.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="24" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
+          <folding>
+            <element signature="e#0#16#0" expanded="true" />
           </folding>
         </state>
       </provider>

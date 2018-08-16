@@ -2,6 +2,6 @@ package pe
 
 import chisel3._
 
-class PE extends Module {
+class PE(c: PEConfig) extends Module {
 
 }
