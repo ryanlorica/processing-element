@@ -1,54 +1,57 @@
 # processing-element
-A processing element for course-grained reconfigurability in deep neural network accelerators. Implemented in Scala w/ Chisel [1].
+A course-grained reconfigurable architecture-based processing element for deep neural network accelerators. To be implemented in Scala w/ Chisel3 [1].
 
 *Version 2 Proposal.*
 
 ## Overview
-Arrays of processing elements (PE) are at the heart of many deep neural network (DNN) accelerator designs [2]. This implementation provides a PE generator function: one that, once configured, will generate a Chisel Module for FIRRTL or Verilog for a PE. The goal of this design is to both emulate existing PEs and to generalize to new ones. Ideally, it will enable programmatic design-space exploration.
-
-
-<img src="img/top-level-arch.png" width="720">
-
-## Design Philosophy
-With Version 1, the primary design trade-offs were between expressive power of configuration and simplicity of use; the balance was tilted severely toward expressive power. However, for Version 2, precise topological configuration is sacrificed for both representational power and simplicity of use. With very little mandatory configuration, the PE-as-is supports a wide variety of data flows, albeit with routing overhead. Programming-like configuration is gone; one only has to set connections, SIMD widths, and function sets. Pipelining is automatically optimized and internal control is entirely predefined; the PE is controlled via a limited set of external control signals.
+Arrays of processing elements (PE) are at the heart of many deep neural network (DNN) accelerator designs [2]. This implementation presents a novel PE design intended to emulate existing dataflows as well as generalize to new ones. It allows configuration both post- and pre- synthesis. The pre-synthesis configurability consists of bit-widths, number representation, multiplier/adder type, and module existence. Post-synthesis configuration consists of data routing and function selection. In other words, topological configurations are set pre-synthesis, dataflow configurations are set post-synthesis.
 
 ## Microarchitecture
-The PE microarchitecture consists of five modules and a relatively simple NoC. To enable arbitrary data flows, the NoC passes packets consisting of both data and routing instructions. 
-In addition to a control unit and NoC, the PE has five modules connected via a configurable NoC:
+The PE microarchitecture consists of seven modules and a minature NoC. The post-synthesis configurability is leverages an all-to-all NoC between the seven modules. The NoC is configured via reprogrammable registers to route data along specific paths. Since there are likely many cycles in between processing different DNN layers, this CGRA approach minimizes the overhead routing power cost. The PE's seven modules are
 1. an interface with the external array,
-2. a register file (RF),
-3. a SIMD adder,
-4. a SIMD multiplier,
-5. and a nonlinear functional unit.
+2. a register file for weights,
+3. a register file for activations,
+4. a register file for partial sums,
+5. a SIMD adder,
+6. a SIMD multiplier,
+7. and a nonlinear functional unit.
 
-### NoC
+### Network-on-Chip
 #### Router
-Every module has a router for I/O.  
+Every module has a specialized router for I/O. The router each router has a configuration register that contains information for routing. For example, for to emulate the Eyeriss PE [3], the weight RF and activation RF output to the multiplier, the multiplier outputs to the adder, the adder outputs to the partial sum register and IO module, and the partial sum register outputs to the adder. Pipelining is automatically facilitated through Decoupled (ready/valid) interfaces between each router and the entrance to the PE. 
 #### Links
-Each of the links is equipped with a configurable register chain to facilitate pipelining. Every link may also vary in terms of width and bitwidth; *i.e.* it will be width * bitwidth wires wide. Link width and bitwidth is automatically set to match the module interfaces. 
+The links between the routers are of configurable bit-widths and data representations, *e.g.* 8-bit signed int, 16-bit floating point, 64-bit floating point, *etc.* Each link is not configured directly, but is configured via a global "data path" configuration.
+#### Addresses
+| Module           | Address |
+| ---------------- | ------- |
+| I/O              | 0       |
+| Weight RF        | 1       |
+| Activation RF    | 2       |
+| Multiplier Block | 3       |
+| Adder Block      | 4       |
+| Partial Sum RF   | 5       |
+| Nonlinear Unit   | 6       |
 
-### Register File
+### Register Files
 The register file is of configurable
 1. memory size,
-2. bitwidth,
-3. write ports,
-4. and read ports.
-All read/write ports act simultaneously (how do we do half cycle r/w?), so it is up to addressing to avoid hazards.
+2. bit-width,
+3. data representation,
+4. number of inputs,
+5. and number of outputs.
 
-### Adder
-The adder is slightly complicated; this is to enable both SIMD MACs and SIMD additions. It is of a configurable input width and bitwidth. It can also be configured to add in parallel, as a tree, or both. For example, one configured to do both may have 256 input pairs, but based on a control signal, will either reduce groups of 16 to 16 outputs or simply add all 256 pairs in parallel. One configured as a 256:1 tree may simply always reduce 256 inputs to one output.
+The number of inputs and outputs is automatically set via a global SIMD configuration. The RFs are also fully addressable to enable emerging dataflows.
 
-## Control
-The PE has a decoder that will decode a non-configurable set of input signals. The set of possible input signals is limited to
-1. Load Partial Sum,
-2. Load Weight,
-3. Load Activation,
-4. Convolve,
-5. Classify,
-2. Normalize,
-3. and Pool.
-Control signals are pipelined identically to the data, allowing pipelined control.
+### Adder Block
+The adder is slightly complicated; this is to enable both SIMD MACs and SIMD additions. It is of a configurable input width and bitwidth. It can also be configured pre-synthesis to be able to add in parallel, as a tree, or both. For example, one configured to do both may have 256 input pairs, but based on a control signal, will either reduce groups of 16 to 16 outputs or simply add all 256 pairs in parallel. One configured as a 256:1 tree may simply always reduce 256 inputs to one output.
+
+### Multiplier Block
+The multiplier block is simply a collection of multipliers that operate in parallel. The amount of multipliers is set pre-synthesis. The multiplier implementation is also configurable. *E.g.* it can be a 2-cycle 16-bit floating point multiplier or a 1-cycle 8-bit integer multiplier. 
+
+### Nonlinear Functional Unit
+Pre-synthesis configuration for the nonlinear unit consists of determining function sets and implementations. As of right now, it only supports ReLu for n-bit integers.
 
 ## References
 [1] J. Bachrach, H. Vo, B. Richards, Y. Lee, A. Waterman, R. Avizienis, J. Wawrzynek, K. Asanovic, "Chisel: Constructing Hardware in a Scala Embedded Language," in *Design Automation Conference*, 2012
-[2] V. Sze, T.-J. Yang, Y.-H. Chen, and J. Emer, "Efficient Processing of Deep Neural Networks: A Tutorial and Survey," in *Proc. IEEE*, vol. 105, no. 12, pp. 2295-2329, Dec 2017  
+[2] V. Sze, T.-J. Yang, Y.-H. Chen, and J. Emer, "Efficient Processing of Deep Neural Networks: A Tutorial and Survey," in *Proc. IEEE*, vol. 105, no. 12, pp. 2295-2329, Dec 2017
+[3] Y.-H. Chen, T. Krishna, J. Emer, V. Sze, "Eyeriss: An Energy-Efficient Reconfiurable Accelerator for Deep Convolutional Neural Netowrks," *IEEE Journal of Solid-State Circuits*, vol. 52, pp. 127-138, 2016
