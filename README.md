@@ -1,7 +1,7 @@
 # processing-element
 A course-grained reconfigurable architecture-based processing element for deep neural network accelerators. To be implemented in Scala w/ Chisel3 [1].
 
-*Version 2 Proposal.*
+*Version 2*
 
 ## Overview
 Arrays of processing elements (PE) are at the heart of many deep neural network (DNN) accelerator designs [2]. This implementation presents a novel PE design intended to emulate existing dataflows as well as generalize to new ones. It allows configuration both post- and pre- synthesis. The pre-synthesis configurability consists of bit-widths, number representation, multiplier/adder type, and module existence. Post-synthesis configuration consists of data routing and function selection. In other words, topological configurations are set pre-synthesis, dataflow configurations are set post-synthesis.
