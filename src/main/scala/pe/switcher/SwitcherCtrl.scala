@@ -1,6 +1,6 @@
 package pe.switcher
 
-import chisel3.{Bool, Bundle, UInt}
+import chisel3._
 
 class SwitcherCtrl extends Bundle {
   val enable = Bool()

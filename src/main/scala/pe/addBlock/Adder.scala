@@ -1,6 +1,6 @@
 package pe.addBlock
 
-import chisel3.{Bits, BlackBox, Bundle, Input, Output}
+import chisel3._
 import pe.Encoding
 
 class Adder(encoding: Encoding) extends BlackBox {

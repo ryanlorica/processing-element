@@ -2,7 +2,10 @@ package pe.switcher
 
 import chisel3._
 import chisel3.util._
+
 import pe.PEConfig
+
+import scala.collection.immutable
 
 class Switcher(c: PEConfig, id: Int) extends Module {
 
@@ -11,14 +14,14 @@ class Switcher(c: PEConfig, id: Int) extends Module {
 
     val config: SwitcherCtrl = Input(new SwitcherCtrl)
 
-    val frSwitchNet: Vector[DecoupledIO[Vec[Bits]]] = Vector((0 until 7).map { x: Int =>
-      if (c.modExists(x)) Some(Flipped(Decoupled(Vec(c.simdWidth, Bits(c.dataWidth.W))))) else None })
+    val frSwitchNet: immutable.IndexedSeq[Option[DecoupledIO[Vec[UInt]]]] = (0 until 7).map { x: Int =>
+      if (c.modExists(x)) Some(Flipped(Decoupled(Vec(c.simdWidth, Bits(c.encoding.dataWidth.W))))) else None }
 
-    val toSwitchNet: Vector[DecoupledIO[Vec[Bits]]] = Vector((0 until 7).map { x: Int =>
-      if (c.modExists(x)) Some(Decoupled(Vec(c.simdWidth, Bits(c.dataWidth.W)))) else None })
+    val toSwitchNet: immutable.IndexedSeq[Option[DecoupledIO[Vec[UInt]]]] = (0 until 7).map { x: Int =>
+      if (c.modExists(x)) Some(Decoupled(Vec(c.simdWidth, Bits(c.encoding.dataWidth.W)))) else None }
 
-    val frMod: DecoupledIO[Vec[Bits]] = Flipped(Decoupled(Vec(c.simdWidth, Bits(c.dataWidth.W))))
-    val toMod: DecoupledIO[Vec[Bits]] = Decoupled(Vec(c.simdWidth, Bits(c.dataWidth.W)))
+    val frMod: DecoupledIO[Vec[UInt]] = Flipped(Decoupled(Vec(c.simdWidth, UInt(c.encoding.dataWidth.W))))
+    val toMod: DecoupledIO[Vec[UInt]] = Decoupled(Vec(c.simdWidth, UInt(c.encoding.dataWidth.W)))
   })
 
   val sourceReg = RegInit(0.U(3.W))
@@ -29,7 +32,7 @@ class Switcher(c: PEConfig, id: Int) extends Module {
     destReg := io.config.destIn
   }
 
-  io.toMod <> PriorityMux(UIntToOH(sourceReg), io.frSwitchNet)
-  io.frMod <> PriorityMux(UIntToOH(destReg), io.toSwitchNet)
+  io.toMod <> PriorityMux(UIntToOH(sourceReg).toBools, io.frSwitchNet.map( x => x.getOrElse(DontCare)))
+  io.frMod <> PriorityMux(UIntToOH(destReg).toBools, io.toSwitchNet.map( x => x.getOrElse(DontCare)))
 }
 
