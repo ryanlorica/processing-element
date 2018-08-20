@@ -36,6 +36,7 @@ Pre-synthesis, the PE supports a set of *fixed-width* datapaths for both integer
 The modules are connected via an all-to-all topology, controlled via the central switcher. Data and timing is handled via a producer/consumer pattern. Producers cast their outputs to the switcher until taken by a consumer, automatically facilitating pipelining. The switcher sets multiplexers based on the producer/consumer relationships of each module, enabling single-, multi-, and broadcasting data. The producer/consumer relationships are held in a small register file in the switcher; each module has a dedicated register that holds the address of the sources it draws from. Since there are likely many cycles in between processing different DNN layers, this CGRA approach minimizes the overhead routing power cost.
 
 The addresses of each module are shown below.
+
 | Module           | Address |
 | ---------------- | ------- |
 | I/O              | 0       |
