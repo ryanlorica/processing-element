@@ -6,7 +6,7 @@ A course-grained reconfigurable architecture-based processing element for deep n
 ## Overview
 Arrays of processing elements (PEs) are at the heart of many deep neural network (DNN) accelerator designs [2]. This implementation presents a flexible PE design intended to emulate existing dataflows as well as generalize to emerging ones. It allows configuration both post- and pre- synthesis. The pre-synthesis configurability consists of bit-widths, SIMD parameters, number representation, multiplier/adder type, and module existence. Post-synthesis configuration consists of data routing and function selection. In other words, topological configurations are set pre-synthesis, dataflow configurations are set post-synthesis.
 
-<img align="right" src="images/top-level-arch.png" width="500">
+<img align="right" src="img/top-level-arch.png" width="500">
 
 ## Microarchitecture and Configurability
 The PE microarchitecture consists of six* potential modules and a "switcher". These six modules are
