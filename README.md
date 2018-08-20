@@ -19,7 +19,7 @@ The PE microarchitecture consists of six* potential modules and a "switcher". Th
 
 The switcher connects these and determines connectvity.
 
-* A SIMD FMA is planned
+\* A SIMD FMA is planned
 
 ### Global Configurations
 
