@@ -19,7 +19,7 @@ class RFReadWriteTest(c: RF) extends PeekPokeTester(c) {
   for (x <- 0 until c.simdWidth) {
 
     for (y <- 0 until c.memSize) {
-      val num = random.nextInt(maxNum)
+      val num = random.nextInt(maxNum - x) + x
       golden += num
 
       poke(c.io.control.wAddr(x), y)
