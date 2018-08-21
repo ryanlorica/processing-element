@@ -3,11 +3,11 @@
 *.log
 
 // sbt
+project/
 target/
 test_run_dir/
 
 // IntelliJ
 .idea/
-project/
 1.1.+
 3.0.+,
