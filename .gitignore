@@ -5,9 +5,9 @@
 // sbt
 target/
 test_run_dir/
-project/
 
 // IntelliJ
 .idea/
+project/
 1.1.+
 3.0.+,
