@@ -1,5 +1,9 @@
 package pe.nlu
 
-class ReLu {
+import chisel3._
 
+class ReLu extends Module {
+  val io = IO(new Bundle{
+
+  })
 }

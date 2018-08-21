@@ -1,6 +1,13 @@
+// Scala
 *.class
 *.log
 
+// sbt
 target/
 test_run_dir/
+project/
+
+// IntelliJ
 .idea/
+1.1.+
+3.0.+,

@@ -1,5 +1,7 @@
 package pe.nlu
 
-class Max {
+import chisel3._
+
+class Max extends Module {
 
 }

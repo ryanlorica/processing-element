@@ -1,5 +1,7 @@
 package pe.nlu
 
-class Tanh {
+import chisel3._
+
+class Tanh extends Module {
 
 }

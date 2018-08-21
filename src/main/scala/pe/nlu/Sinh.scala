@@ -1,5 +1,10 @@
 package pe.nlu
 
-class Sinh {
+import chisel3._
 
+class Sinh extends Module {
+
+  val io = IO(new Bundle{
+
+  })
 }
