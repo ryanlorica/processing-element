@@ -20,7 +20,7 @@ The PE microarchitecture consists of six* potential modules and a "switcher". Th
 
 The switcher connects these and determines connectvity.
 
-\* A SIMD FMA is planned
+\* A SIMD FMA is planned.
 
 ### Global Configurations
 
@@ -51,13 +51,16 @@ The addresses of each module are shown below.
 There are potentially register files for weights, activations, and partial sums. The only module-specific specific configuration is register size. The number of ports is automatically set via the global SIMD configuration. For the weight and activation RFs, there will be *m * n* input/output ports. For the partial sum RF there will only be *n* ports. For post-synthesis configurability, *each* of these ports must be controlled via read/write enable and address signals.
 
 #### Adder Block
-To enable both SIMD MACs and SIMD additions, the adder is slightly complicated. Pre-synthesis, its capabilities are set: adding in parallel, as a tree, or both. One configured to add in parallel will have two *m * n* input lines and output the *m * n* sums. One configured to add as a tree will reduce each *m* dimensional vector to a single sum, *i.e.* it maps *m * n* inputs to *n* outputs. One configured to do both will have a control signal and local register that dictates which it performs.
+To enable both SIMD MACs and SIMD additions, the adder is slightly complicated. Pre-synthesis, its capabilities are set. It can have one or both of these abilities: *vector addition* and *reductive addition*. Parallel addition takes in two *mn*-dimensional inputs and performs standard vector addition, adding the respective components. Reductive addition takes *n* *m*-dimensional inputs and maps them each to their respective sum.
+
+Regarding topology, an adder block capable of vector addition only will have two *mn*-dimensional input lines, one *mn*-dimensional output line, and *mn* adders. One capable of reductive addition only will have *n* *m*-dimensional inputs (expressed as one *mn*-dimensional line), *n* outputs (expressed as one *n*-dimensional line), and *n * floor(log2(m))* adders. One capable of both will have two *mn*-dimensional input lines, one *mn*-dimensional output line, one *n*-dimensional output line, *mn* adders, and an additional control signal and register to determine its configuration. The control signal must only write to the register to reconfigure the adder; it need not assert a signal every cycle.
+
 
 #### Multiplier Block
-The multiplier block is simply a collection of *m * n* multipliers that operate in parallel. The amount and type of multiplier is set by the global configurations.
+The multiplier block is simply a collection of *m * n* multipliers that operate in parallel. It will perform element-wise multiplication of two *mn*-dimensional vectors. The size and type of multiplier is automatically set by the global configurations, so no manual configuring is necessary.
 
 #### Nonlinear Function Unit
-Pre-synthesis configuration for the nonlinear unit consists of determining function sets and implementations. As of right now, it only supports ReLu for n-bit integers.
+Pre-synthesis configuration for the nonlinear unit consists of determining function sets and implementations. As of right now, it only supports ReLu for *n* simultaneous integers.
 
 ## References
 [1] J. Bachrach, H. Vo, B. Richards, Y. Lee, A. Waterman, R. Avizienis, J. Wawrzynek, K. Asanovic, "Chisel: Constructing Hardware in a Scala Embedded Language," in *Design Automation Conference*, 2012
