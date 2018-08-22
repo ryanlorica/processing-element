@@ -37,15 +37,15 @@ The modules are connected via an all-to-all topology, controlled via the central
 
 The addresses of each module are shown below.
 
-| Module           | Address |
-| ---------------- | ------- |
-| I/O              | 0       |
-| Weight RF        | 1       |
-| Activation RF    | 2       |
-| Multiplier Block | 3       |
-| Adder Block      | 4       |
-| Partial Sum RF   | 5       |
-| Nonlinear Unit   | 6       |
+| Module           | Address   |
+| ---------------- | --------- |
+| Weight RF        | 0         |
+| Activation RF    | 1         |
+| Multiplier Block | 2         |
+| Adder Block      | 3         |
+| Partial Sum RF   | 4         |
+| Nonlinear Unit   | 5         |
+| I/O              | 6, 7, ... |
 
 #### Register Files
 There are potentially register files for weights, activations, and partial sums. The only module-specific specific configuration is register size. The number of ports is automatically set via the global SIMD configuration. For the weight and activation RFs, there will be *m * n* input/output ports. For the partial sum RF there will only be *n* ports. For post-synthesis configurability, *each* of these ports must be controlled via read/write enable and address signals.
