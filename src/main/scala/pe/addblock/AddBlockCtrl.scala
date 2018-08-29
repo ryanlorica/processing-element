@@ -1,4 +1,4 @@
-package pe.addBlock
+package pe.addblock
 
 import chisel3.{Bool, Bundle}
 

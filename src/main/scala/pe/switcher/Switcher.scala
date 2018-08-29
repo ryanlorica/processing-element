@@ -2,75 +2,61 @@ package pe.switcher
 
 import chisel3._
 import chisel3.util._
+
 import pe._
 
-class Switcher(c: PEConfig, id: Int) extends Module {
+
+class Switcher(c: PEConfig) extends Module {
 
   //noinspection TypeAnnotation
   val io = IO(new Bundle {
 
-    val config: SwitcherCtrl = Input(new SwitcherCtrl)
+    val configEn: Bool = Input(Bool())
+    val config: SwitcherCtrl = new SwitcherCtrl(c)
 
-    val toArray: Vec[DecoupledIO[Vec[UInt]]] =
-      Vec(c.numRFs, Flipped(Decoupled(Vec(c.simdM * c.simdN, Bits(c.encoding.dataWidth.W)))))
+    val peIO: PEData = new PEData(c)
 
-    val frArray: Vec[DecoupledIO[Vec[UInt]]] =
-      Vec(c.numRFs, Decoupled(Vec(c.simdM * c.simdN, Bits(c.encoding.dataWidth.W))))
+    val modIO: Vec[Option[Parcel]] = VecInit(for (mod <- PE.mods) yield {
+      if(c.modExists(mod)) mod match {
+        case WRF => Flipped(new Parcel(ThickParcel, c))
+        case ARF => Flipped(new Parcel(ThickParcel, c))
+        case MBL => Flipped(new Parcel(MultBParcel, c))
+        case ABL => Flipped(new Parcel(AdderBParcel, c))
+        case PRF => Flipped(new Parcel(ThinParcel, c))
+        case NLU => Flipped(new Parcel(ThinParcel, c))
+    }})
 
-    val weightRF: SwitcherInterface = new SwitcherInterface(WRF, c)
-    val actvtnRF: SwitcherInterface = new SwitcherInterface(ARF, c)
-    val multBlock: SwitcherInterface = new SwitcherInterface(MBL, c)
-    val
-
-    val toActvtnRF: Option[DecoupledIO[Vec[UInt]]] =
-      if(c.modExists(ARF)) Some(Flipped(Decoupled(Vec(c.simdM * c.simdN, Bits(c.encoding.dataWidth.W))))) else None
-
-    val frActvtnRF: Option[DecoupledIO[Vec[UInt]]] =
-      if(c.modExists(ARF)) Some(Decoupled(Vec(c.simdM * c.simdN, Bits(c.encoding.dataWidth.W)))) else None
-
-    val toMultLeft: Option[DecoupledIO[Vec[UInt]]] =
-      if(c.modExists(MBL)) Some(Flipped(Decoupled(Vec(c.simdM * c.simdN, Bits(c.encoding.dataWidth.W))))) else None
-
-    val toMultRight: Option[DecoupledIO[Vec[UInt]]] =
-      if(c.modExists(MBL)) Some(Flipped(Decoupled(Vec(c.simdM * c.simdN, Bits(c.encoding.dataWidth.W))))) else None
-
-    val frMult: Option[DecoupledIO[Vec[UInt]]] =
-      if(c.modExists(MBL)) Some(Decoupled(Vec(c.simdM * c.simdN, Bits(c.encoding.dataWidth.W)))) else None
-
-    val toAddLeft: Option[DecoupledIO[Vec[UInt]]] =
-      if(c.modExists(ABL)) Some(Flipped(Decoupled(Vec(c.simdM * c.simdN, Bits(c.encoding.dataWidth.W))))) else None
-
-    val toAddRight: Option[DecoupledIO[Vec[UInt]]] =
-      if(c.modExists(ABL)) Some(Flipped(Decoupled(Vec(c.simdM * c.simdN, Bits(c.encoding.dataWidth.W))))) else None
-
-    val frAddPara: Option[DecoupledIO[Vec[UInt]]] =
-      if(c.modExists(ABL)) Some(Decoupled(Vec(c.simdM * c.simdN, Bits(c.encoding.dataWidth.W)))) else None
-
-    val frAddTree: Option[DecoupledIO[Vec[UInt]]] =
-      if(c.modExists(ABL)) Some(Decoupled(Vec(c.simdN, Bits(c.encoding.dataWidth.W)))) else None
-
-    val toPsumRF: Option[DecoupledIO[Vec[UInt]]] =
-      if(c.modExists(PRF)) Some(Flipped(Decoupled(Vec(c.simdM * c.simdN, Bits(c.encoding.dataWidth.W))))) else None
-
-    val frPsumRF: Option[DecoupledIO[Vec[UInt]]] =
-      if(c.modExists(PRF)) Some(Decoupled(Vec(c.simdN, Bits(c.encoding.dataWidth.W)))) else None
-
-    val toNLU: Option[DecoupledIO[Vec[UInt]]] =
-      if(c.modExists(NLU)) Some(Flipped(Decoupled(Vec(c.simdM * c.simdN, Bits(c.encoding.dataWidth.W))))) else None
-
-    val frNLU: Option[DecoupledIO[Vec[UInt]]] =
-      if(c.modExists(NLU)) Some(Decoupled(Vec(c.simdN, Bits(c.encoding.dataWidth.W)))) else None
   })
 
-  val sourceReg = RegInit(0.U(3.W))
-  val destReg = RegInit(0.U(3.W))
-
-  when (io.config.enable) {
-    sourceReg := io.config.sourceIn
-    destReg := io.config.destIn
+  val configReg: SwitcherCtrl = Reg(new SwitcherCtrl(c))
+  when(io.configEn) {
+    configReg <> io.config
   }
 
-  io.toMod <> PriorityMux(UIntToOH(sourceReg).toBools, io.frSwitchNet.map( x => x.getOrElse(DontCare)))
-  io.frMod <> PriorityMux(UIntToOH(destReg).toBools, io.toSwitchNet.map( x => x.getOrElse(DontCare)))
+  val modThickSourceReg: Vec[Option[Vec[UInt]]] = configReg.modThickSource
+  val modThinSourceReg: Vec[Option[Vec[UInt]]] = configReg.modThinSource
+  val extSourceReg: Vec[Option[Vec[UInt]]] = configReg.extSource
+
+  val source: Vec[Option[Parcel]] = VecInit(io.modIO ++ io.peIO.thickInputs ++ io.peIO.thinInputs)
+
+  (io.peIO.thickOutputs ++ io.peIO.thinOutputs).zipWithIndex.foreach {
+    case (sink: Option[Parcel], i: Int) =>
+      val sel: Seq[Bool] = UIntToOH(extSourceReg(i).get(1)).toBools()
+      if (i < io.peIO.thickOutputs.size)
+        sink.get.thickIn.get(1) := PriorityMux[Option[Parcel]](sel zip source).get.thickIn.get(1)
+      else
+        sink.get.thinIn.get(1) := PriorityMux[Option[Parcel]](sel zip source).get.thinIn.get(1)
+  }
+
+  PE.mods.filter(c.modExists(_)).foreach(sink => {
+    for (i: Int <- modThickSourceReg(PE.modID(sink)).getOrElse(Seq.empty[Option[Vec[UInt]]]).indices) {
+      val sel: Seq[Bool] = UIntToOH(modThickSourceReg(PE.modID(sink)).get(i)).toBools()
+      io.modIO(PE.modID(sink)).get.thickIn.get(i) := PriorityMux[Option[Parcel]](sel zip source).get.thickIn.get(1)
+    }
+    for (i: Int <- modThinSourceReg(PE.modID(sink)).getOrElse(Seq.empty[Option[Vec[UInt]]]).indices) {
+      val sel: Seq[Bool] = UIntToOH (modThinSourceReg(PE.modID(sink)).get(i)).toBools()
+      io.modIO(PE.modID(sink)).get.thinIn.get(i) := PriorityMux[Option[Parcel]](sel zip source).get.thinIn.get(1)
+    }
+  })
 }
 

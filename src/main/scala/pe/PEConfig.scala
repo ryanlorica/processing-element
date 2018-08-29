@@ -1,16 +1,22 @@
 package pe
 
-case class PEConfig(modExists: Map[ModType, Boolean],
-                    encoding: Encoding,
+import chisel3.util._
+
+import pe._
+
+case class PEConfig(modExists: Map[TModule, Boolean],
+                    memSize: Map[TModule, Int],
+                    encoding: TEncoding,
                     simdM: Int,
                     simdN: Int,
-                    weightRFSize: Int = 0,
-                    actvtnRFSize: Int = 0,
-                    psumRFSize: Int = 0,
+                    numThickIn: Int,
+                    numThinIn: Int,
+                    numThickOut: Int,
+                    numThinOut: Int,
                     adderTreeEn: Boolean = false,
-                    adderParaEn: Boolean = false) {
-
-  private def btoi(b: Boolean): Int = if(b) 1 else 0
-
-  val numRFs: Int = btoi(modExists(WRF)) + btoi(modExists(ARF)) + btoi(modExists(PRF))
+                    adderParaEn: Boolean = false
+                    ) {
+  
+  //val numRFs: Int = (for (mod <- List(WRF, ARF, PRF)) yield { modExists(mod) }).count( _ == true )
+  val addrWidth: Int = log2Ceil(PE.mods.size + numThickIn + numThinIn)
 }

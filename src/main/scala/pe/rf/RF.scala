@@ -1,25 +1,31 @@
 package pe.rf
 
-import chisel3.core.DontCare
-import chisel3.util.log2Ceil
 import chisel3._
+import chisel3.util._
 
+import pe._
 
 import scala.math.pow
 
-class RF(val memSize: Int, val dataWidth: Int, val simdWidth: Int) extends Module {
+class RF(modType: TModule, c: PEConfig) extends Module {
 
-  private val addrWidth: Int = log2Ceil(memSize)
+  private val addrWidth: Int = log2Ceil(c.memSize(modType))
 
   //noinspection TypeAnnotation
   val io = IO(new Bundle{
-    val control = Input(new RFControl(memSize, simdWidth))
-    val in = Input(Vec(simdWidth, Bits(dataWidth.W)))
-    val out = Output(Vec(simdWidth, Bits(dataWidth.W)))
+    // TODO: Add control
+    val data = modType match {
+      case WRF => new Parcel(ThickParcel, c)
+      case ARF => new Parcel(ThickParcel, c)
+      case PRF => new Parcel(ThinParcel, c)
+    }
   })
 
-  val regs = RegInit(VecInit(Seq.fill(pow(2, addrWidth).toInt){0.U(dataWidth.W)}))
+  val regs = RegInit(VecInit(Seq.fill(pow(2, addrWidth).toInt){0.U(c.encoding.dataWidth.W)}))
 
+  // TODO: Re-implement RF
+
+  /*
   when (io.control.wEnable) {
     for (i <- 0 until simdWidth) { regs(io.control.wAddr(i)) := io.in(i) }
   }
@@ -29,5 +35,6 @@ class RF(val memSize: Int, val dataWidth: Int, val simdWidth: Int) extends Modul
   } .otherwise {
     io.out := DontCare
   }
+  *
 
 }

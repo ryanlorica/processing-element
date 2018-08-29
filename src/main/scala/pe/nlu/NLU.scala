@@ -1,16 +1,22 @@
 package pe.nlu
 
 import chisel3._
-import pe.Encoding
+import chisel3.util._
 
-class NLU(dataWidth: Int, encoding: Encoding) extends Module {
+import pe._
+
+class NLU(c: PEConfig) extends Module {
 
   //noinspection TypeAnnotation
   val io = IO(new Bundle {
     val fSel = Input(UInt(2.W))
-    val in = Input(Bits(dataWidth.W))
-    val out = Output(Bits(dataWidth.W))
+    val data = new Parcel(ThinParcel, true, true, c)
   })
 
-  io.out := 0.U
+  // TODO: Implement ReLu
+  // TODO: Implement Max
+  // TODO: Implement sinh
+  // TODO: Implement tanh
+
+  io.data.out.get := 0.U
 }
