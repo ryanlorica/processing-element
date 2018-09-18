@@ -5,11 +5,10 @@ import chisel3.util._
 
 import pe._
 
-class MultBlock(c: PEConfig) extends Module {
+class MultBlock(c: PEConfiguration) extends Module {
 
   val io = IO(new Bundle {
     val enable = Bool()
-    val data = new MultBlockIO(c)
   })
 
   // TODO: Implement
@@ -28,4 +27,8 @@ class MultBlock(c: PEConfig) extends Module {
 //    io.out.bits(x) := connect(io.in1.bits(x), io.in2.bits(x))
 //  }
 
+}
+
+object MultBlock {
+  // stuff
 }

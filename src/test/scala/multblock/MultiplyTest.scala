@@ -1,4 +1,4 @@
-package multBlock
+package multblock
 
 class MultiplyTest {
 

@@ -2,12 +2,12 @@ package pe.rf
 
 import chisel3._
 import chisel3.util._
-
 import pe._
+import pe.util.Parcel
 
 import scala.math.pow
 
-class RF(modType: TModule, c: PEConfig) extends Module {
+class RF(modType: TModule, c: PEConfiguration) extends Module {
 
   private val addrWidth: Int = log2Ceil(c.memSize(modType))
 
@@ -35,6 +35,11 @@ class RF(modType: TModule, c: PEConfig) extends Module {
   } .otherwise {
     io.out := DontCare
   }
-  *
+  */
 
 }
+
+object RF {
+  // Stuff
+}
+

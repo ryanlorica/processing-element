@@ -10,3 +10,4 @@ case object ThickInPortParcel extends TParcel
 case object ThickOutPortParcel extends TParcel
 case object ThinInPortParcel extends TParcel
 case object ThinOutPortParcel extends TParcel
+case object NullParcel extends TParcel

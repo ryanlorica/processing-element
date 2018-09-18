@@ -4,7 +4,7 @@ import chisel3._
 
 import pe.rf._
 
-class PEControl(c: PEConfig) extends Bundle {
+class PEControl(c: PEConfiguration) extends Bundle {
 
   val weightRFCtrl: Option[RFControl] =
     if (c.modExists(WRF)) Some(new RFControl(c.memSize(WRF), c.simdM * c.simdN)) else None

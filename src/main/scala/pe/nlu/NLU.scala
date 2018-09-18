@@ -2,15 +2,15 @@ package pe.nlu
 
 import chisel3._
 import chisel3.util._
-
 import pe._
+import pe.util.Parcel
 
-class NLU(c: PEConfig) extends Module {
+class NLU(c: PEConfiguration) extends Module {
 
   //noinspection TypeAnnotation
   val io = IO(new Bundle {
     val fSel = Input(UInt(2.W))
-    val data = new Parcel(ThinParcel, true, true, c)
+    val data = new Parcel(ThinParcel, c)
   })
 
   // TODO: Implement ReLu
@@ -18,5 +18,9 @@ class NLU(c: PEConfig) extends Module {
   // TODO: Implement sinh
   // TODO: Implement tanh
 
-  io.data.out.get := 0.U
+
+}
+
+object NLU {
+  // stuff
 }

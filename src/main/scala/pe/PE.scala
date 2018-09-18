@@ -7,7 +7,7 @@ import pe.addblock._
 import pe.multblock._
 import pe.switcher._
 
-class PE(c: PEConfig) extends Module {
+class PE(c: PEConfiguration) extends Module {
 
   val io: Record = IO(new Bundle {
     val ctrl = Input(new PEControl(c))
@@ -15,9 +15,9 @@ class PE(c: PEConfig) extends Module {
 }
 
 object PE {
+  def apply(c: PEConfiguration): PE = new PE(c)
 
-  def apply(c: PEConfig): PE = new PE(c)
-
-  val mods: List[TModule] = List(WRF, ARF, MBL, ABL, PRF, NLU)
-  val modID: Map[TModule, Int] = Map(WRF -> 0, ARF -> 1, MBL -> 2, ABL -> 3, PRF -> 4, NLU -> 5)
+  val leftMods = List(LP0, LP1, LP2, WRF, ARF, MBL, ABL)
+  val rightMods = List(RP0, RP1, RP2, ABL, PRF, NBL)
+  val mods: List[TModule] = leftMods.union(rightMods)
 }
