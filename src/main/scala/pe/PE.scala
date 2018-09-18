@@ -4,8 +4,10 @@ import chisel3._
 import chisel3.util.log2Ceil
 import pe.rf._
 import pe.addblock._
+import pe.interfaces.PEControl
 import pe.multblock._
 import pe.switcher._
+import pe.types._
 
 class PE(c: PEConfiguration) extends Module {
 
@@ -19,5 +21,5 @@ object PE {
 
   val leftMods = List(LP0, LP1, LP2, WRF, ARF, MBL, ABL)
   val rightMods = List(RP0, RP1, RP2, ABL, PRF, NBL)
-  val mods: List[TModule] = leftMods.union(rightMods)
+  val mods: List[ModType] = leftMods.union(rightMods)
 }

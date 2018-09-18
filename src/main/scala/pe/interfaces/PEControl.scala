@@ -1,8 +1,9 @@
-package pe
+package pe.interfaces
 
 import chisel3._
-
+import pe.PEConfiguration
 import pe.rf._
+import pe.types.{ARF, PRF, WRF}
 
 class PEControl(c: PEConfiguration) extends Bundle {
 

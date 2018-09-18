@@ -1,6 +1,7 @@
-package pe
+package pe.interfaces
 
 import chisel3._
+import pe.{PE, PEConfiguration}
 
 class PEReprogramWire(c: PEConfiguration) extends Bundle {
 

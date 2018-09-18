@@ -1,9 +1,9 @@
 package pe.addblock
 
 import chisel3._
-import pe.TEncoding
+import pe.types.Encoding
 
-class Adder(encoding: TEncoding) extends BlackBox {
+class Adder(encoding: Encoding) extends BlackBox {
   //noinspection TypeAnnotation
   val io = IO(new Bundle {
     val in1 = Input(Bits(encoding.dataWidth.W))

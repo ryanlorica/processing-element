@@ -1,7 +1,6 @@
-package pe.switcher
+package pe.interfaces
 
 import chisel3._
-
 import pe.PEConfiguration
 
 /**

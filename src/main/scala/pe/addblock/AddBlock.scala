@@ -3,6 +3,7 @@ package pe.addblock
 import chisel3._
 import chisel3.util._
 import pe._
+import pe.types.AdderBParcel
 import pe.util.Parcel
 
 class AddBlock(c: PEConfiguration) extends Module {

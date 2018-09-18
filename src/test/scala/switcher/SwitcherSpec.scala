@@ -1,9 +1,9 @@
 package switcher
 
 import org.scalatest.{FlatSpec, Matchers}
-
 import pe._
 import pe.switcher._
+import pe.types._
 
 class SwitcherSpec extends FlatSpec with Matchers {
 
@@ -11,9 +11,9 @@ class SwitcherSpec extends FlatSpec with Matchers {
 
   it should "Instantiate Correctly" in {
 
-    val modExists: Map[TModule, Boolean] =
+    val modExists: Map[ModType, Boolean] =
       Map(WRF -> true, ARF -> true, MBL -> true, ABL -> true, PRF -> true, NBL -> true)
-    val memSize: Map[TModule, Int] =
+    val memSize: Map[ModType, Int] =
       Map(WRF -> 128, ARF -> 128, PRF -> 128)
     val encoding = INT8
     val simdM = 4

@@ -3,6 +3,7 @@ package pe.nlu
 import chisel3._
 import chisel3.util._
 import pe._
+import pe.types.ThinParcel
 import pe.util.Parcel
 
 class NLU(c: PEConfiguration) extends Module {

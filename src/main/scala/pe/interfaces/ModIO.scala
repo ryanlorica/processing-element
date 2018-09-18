@@ -1,9 +1,9 @@
-package pe.util
+package pe.interfaces
 
 import chisel3._
 import chisel3.util._
-
-import pe._
+import pe.PEConfiguration
+import pe.types._
 
 /**
   * A standardized interface between modules. Each module's input consists of
@@ -23,7 +23,7 @@ import pe._
   * @param modType The type of module automatically sets the shape
   * @param c The configuration object for the PE
   */
-class ModIO(modType: TModule, c: PEConfiguration) extends Bundle {
+class ModIO(modType: ModType, c: PEConfiguration) extends Bundle {
   private val numChannels = modType match {
     case WRF => c.simdN
     case ARF => c.simdN
@@ -55,11 +55,11 @@ object ModIO {
     * @param c The configuration of the context PE
     * @return
     */
-  def apply(modType: TModule, c: PEConfiguration): ModIO = {
+  def apply(modType: ModType, c: PEConfiguration): ModIO = {
     new ModIO(modType, c)
   }
   /** Hardcoding the number of ports each module has */
-  val numInPorts: Map[TModule, Int] = Map(
+  val numInPorts: Map[ModType, Int] = Map(
     WRF -> 1,
     ARF -> 1,
     ABL -> 2,
