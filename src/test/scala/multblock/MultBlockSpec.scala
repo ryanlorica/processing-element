@@ -1,5 +1,0 @@
-package multblock
-
-class MultBlockSpec {
-
-}
