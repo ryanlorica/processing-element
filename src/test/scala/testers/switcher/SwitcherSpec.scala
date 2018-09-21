@@ -1,4 +1,4 @@
-package switcher
+package testers.switcher
 
 import org.scalatest.{FlatSpec, Matchers}
 

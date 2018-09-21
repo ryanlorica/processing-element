@@ -10,7 +10,7 @@ Arrays of processing elements (PEs) are at the heart of many deep neural network
 
 <img align="right" src="img/top-level-arch.png" width="500">
 
-The PE microarchitecture consists of six* potential modules and a "switcher". These six modules are
+The PE microarchitecture consists of six* potential modules and a "testers.switcher". These six modules are
 1. a register file for weights,
 2. a register file for activations,
 3. a register file for partial sums,
@@ -18,7 +18,7 @@ The PE microarchitecture consists of six* potential modules and a "switcher". Th
 5. a SIMD multiplier,
 6. and a nonlinear function unit.
 
-The switcher connects these and determines connectvity.
+The testers.switcher connects these and determines connectvity.
 
 \* A SIMD FMA is planned.
 
@@ -33,7 +33,7 @@ Pre-synthesis, the PE supports a set of *fixed-width* datapaths for both integer
 ### Modules and Module-Specific Configurations
 
 #### Switcher
-The modules are connected via an all-to-all topology, controlled via the central switcher. Data and timing is handled via a producer/consumer pattern. Producers cast their outputs to the switcher until taken by a consumer, automatically facilitating pipelining. The switcher sets multiplexers based on the producer/consumer relationships of each module, enabling single-, multi-, and broadcasting data. The producer/consumer relationships are held in a small register file in the switcher; each module has a dedicated register that holds the address of the sources it draws from. Since there are likely many cycles in between processing different DNN layers, this CGRA approach minimizes the overhead routing power cost.
+The modules are connected via an all-to-all topology, controlled via the central testers.switcher. Data and timing is handled via a producer/consumer pattern. Producers cast their outputs to the testers.switcher until taken by a consumer, automatically facilitating pipelining. The testers.switcher sets multiplexers based on the producer/consumer relationships of each module, enabling single-, multi-, and broadcasting data. The producer/consumer relationships are held in a small register file in the testers.switcher; each module has a dedicated register that holds the address of the sources it draws from. Since there are likely many cycles in between processing different DNN layers, this CGRA approach minimizes the overhead routing power cost.
 
 The addresses of each module are shown below.
 

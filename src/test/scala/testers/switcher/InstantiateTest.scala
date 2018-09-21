@@ -1,4 +1,4 @@
-package switcher
+package testers.switcher
 
 import chisel3.iotesters.PeekPokeTester
 

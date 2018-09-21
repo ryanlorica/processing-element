@@ -1,4 +1,4 @@
-package pe
+package testers.pe
 
 import chisel3.iotesters.PeekPokeTester
 

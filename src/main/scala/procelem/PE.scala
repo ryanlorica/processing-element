@@ -13,7 +13,6 @@ class PE(config: Config) extends Module {
   val switcher = Module(new Switcher(config))
   switcher.io.programWire := io.programWire
 
-  if
 }
 
 /**
