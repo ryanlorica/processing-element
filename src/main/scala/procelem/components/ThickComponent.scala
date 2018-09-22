@@ -1,5 +1,5 @@
 package procelem.components
 
-class RegFileIO {
+class ThickComponent {
 
 }
